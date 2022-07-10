@@ -48,3 +48,20 @@ FROM employees as e
 WHERE (de.to_date = '9999-01-01')
     AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no ASC;
+
+-- Deliverable 3
+-- Develop query to get counts of retirees by birth date
+SELECT count(birth_date),
+        birth_date
+INTO ret_birth
+FROM employees
+WHERE (birth_date BETWEEN '1952-01-01' AND '1955-12-31')
+GROUP BY birth_date
+ORDER BY birth_date ASC;
+
+-- Query eligible mentors by job title
+SELECT count(title), title
+INTO count_elg
+FROM mentor_elg
+GROUP BY title
+ORDER BY count(title) DESC;
